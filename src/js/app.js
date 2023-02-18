@@ -25,39 +25,11 @@ import "../style/index.css";
 function render(variables = {}) {
   console.log("These are the current variables: ", variables); //print on the console
   // here we ask the logical questions to make decisions on how to build the html
-  if (variables.name == null) {
-    variables.name = "Jane";
-  }
-  if (variables.role == null) {
-    variables.role = "Web Developer";
-  }
 
-  if (variables.lastname == null) {
-    variables.lastname = "Doe";
-  }
+  /*if (role.value == null) {
+    role.value = "Choose";
+  }*/
 
-  if (variables.city == null) {
-    variables.city = "Munich";
-  }
-  if (variables.country == null) {
-    variables.country = "Germany";
-  }
-  if (variables.socialMediaPosition == null) {
-    variables.socialMediaPosition = "position-left";
-  }
-  if (variables.twitter == null) {
-    variables.twitter = "https://twitter.com/Pornhub";
-  }
-  if (variables.github == null) {
-    variables.github = "https://github.com/4geeksacademy";
-  }
-  if (variables.linkedin == null) {
-    variables.linkedin = "https://linkedin.com/4geeksacademy";
-  }
-
-  if (variables.instagram == null) {
-    variables.instagram = "https://instagram.com/4geeksacademy";
-  }
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
@@ -66,19 +38,44 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>${variables.name} ${variables.lastname}</h1>
-          <h2>${variables.role}</h2>
-          <h3>${variables.city}, ${variables.country}</h3>
-          <ul class="${variables.socialMediaPosition}">
-            <li><a href=${variables.twitter}><i class="fab fa-twitter"></i></a></li>
-            <li><a href=${variables.github}><i class="fab fa-github"></i></a></li>
-            <li><a href=${variables.linkedin}><i class="fab fa-linkedin"></i></a></li>
-            <li><a href=${variables.instagram}><i class="fab fa-instagram"></i></a></li>
+          
+          <h1>${variables.name ? variables.name : "Nombre"} ${
+    variables.lastname ? variables.lastname : "Apellido"
+  }</h1>
+          <h2>${variables.role ? variables.role : "Web Developer"}</h2>
+          <h3>${variables.city ? variables.city : "Madrid"}, ${
+    variables.country ? variables.country : "Spain"
+  }</h3>
+          <ul class="${
+            variables.socialMediaPosition
+              ? variables.socialMediaPosition
+              : "Position-Left"
+          }">
+            <li><a href=${
+              variables.twitter
+                ? variables.twitter
+                : "https://twitter.com/Pornhub"
+            }><i class="fab fa-twitter"></i></a></li>
+            <li><a href=${
+              variables.github
+                ? variables.github
+                : "https://github.com/4geeksacademy"
+            }><i class="fab fa-github"></i></a></li>
+            <li><a href=${
+              variables.linkedin
+                ? variables.linkedin
+                : "https://linkedin.com/4geeksacademy"
+            }><i class="fab fa-linkedin"></i></a></li>
+            <li><a href=${
+              variables.instagram
+                ? variables.instagram
+                : "https://instagram.com/4geeksacademy"
+            }><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
 }
-
+//https://images.unsplash.com/photo-1619031777353-e3de2db485b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
